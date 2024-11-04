@@ -1,0 +1,7 @@
+# ---- Ignore These Folders ---- #
+__pycache__/
+venv/
+
+# ---- Ignore These Files ---- #
+.DS_Store
+
