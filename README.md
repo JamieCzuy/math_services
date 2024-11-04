@@ -43,6 +43,8 @@ Math Services for BackStage
 
 4. These don't feel like class based views. But maybe since we are going to pre-compute the values maybe they are. For now let's go with functional based views.
 
+5. For all text that a user might see we could be using Django utils translation - gettext_lazy (often mapped to "_"). Not going to do that now, just a thought.
+
 ## Tools and Packages
 
 ### Tools
