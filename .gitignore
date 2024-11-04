@@ -4,4 +4,5 @@ venv/
 
 # ---- Ignore These Files ---- #
 .DS_Store
+db.sqlite3
 

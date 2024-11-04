@@ -61,3 +61,18 @@
         'services',
     ]
     ```
+
+9. Run `./manage.py migrate` to initialize the Sqlite3 database.
+
+10. Run django and open in a browser to check that it is running:
+
+    ```bash
+    ./manage.py runserver 0.0.0.0:8000
+    ```
+
+    ```bash
+    # In a browser open
+    http://localhost:8000
+    ```
+
+11. Now the coding can begin!
