@@ -25,8 +25,9 @@ def difference(request: Request):
 
     diff_data = get_object_or_404(SquaresDifference, given_number=given_number)
 
+    current_datetime = timezone.now()
     response_data = {
-        'datetime': timezone.now(),
+        'datetime': current_datetime,
         'value': diff_data.value,
         'number': given_number,
         'occurrences': diff_data.occurrences,
@@ -34,8 +35,10 @@ def difference(request: Request):
     }
 
     # Update the number of occurrences
-    # (this also auto-updates 'last_requested')
+    # and last requested timestamp
     diff_data.occurrences += 1
+    diff_data.last_requested = current_datetime
+
     diff_data.save()
     diff_data.refresh_from_db()
 

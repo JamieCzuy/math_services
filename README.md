@@ -26,6 +26,8 @@ Math Services for BackStage
     1. For the /difference endpoint:
         If n is not given  or n > 100 or n is not an integer return a 400 Bad Request with a message about n is required and required to be an integer between 0 and 100.
 
+6. Assuming last_requested can be None, representing a number that has never been requested. Means can't use `auto_now`.
+
 ## Considerations
 
 1. To make it easier to run: the django project was created in the root of the repo. It would usually be created in a subfolder, something like ./src.

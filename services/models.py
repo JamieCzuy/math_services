@@ -6,4 +6,4 @@ class SquaresDifference(models.Model):
     given_number = models.PositiveIntegerField()
     value = models.PositiveIntegerField()
     occurrences = models.PositiveIntegerField()
-    last_requested = models.DateTimeField(auto_now=True)
+    last_requested = models.DateTimeField(blank=True, null=True)
