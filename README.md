@@ -15,10 +15,33 @@ Math Services for BackStage
 1. Can use Python 3.12.7 (one of the latest versions of Python)
 2. Can use Django 4.2 (one of the latest LTS versions of Django)
 3. It is ok to not split out the Dev requirements into their own file
+4. The types for the different values in the response are not defined. Here are my assumptions:
+    "datetime" - String (representing a Timezone aware timestamp)
+    "value" - Integer
+    "number" - Integer
+    "occurrences" - Integer
+    "last_datetime" - String (representing a Timezone aware timestamp)
+
+5. There are no requirements around error handling so here are my assumptions:
+    1. For the /difference endpoint:
+        If n is not given  or n > 100 or n is not an integer return a 400 Bad Request with a message about n is required and required to be an integer between 0 and 100.
 
 ## Considerations
 
 1. To make it easier to run: the django project was created in the root of the repo. It would usually be created in a subfolder, something like ./src.
+
+2. For the difference, n is guaranteed to be an integer that is greater than 0 and less than or equal to 100 - so we can pre-compute the values and just have 100 rows in the database.
+
+3. Persistance - for the API we need:
+    1. What the first services require:
+        1. The number passed in
+        2. The solution (we could recalculate but why bother if we are already pulling other info)
+        3. Occurrences (number of times n has been requested)
+        4. The timestamp from the last time n was requested
+    2. Optional 1 adds:
+        1. More that just one number being passed in
+
+4. These don't feel like class based views. But maybe since we are going to pre-compute the values maybe they are. For now let's go with functional based views.
 
 ## Tools and Packages
 
@@ -30,4 +53,5 @@ Math Services for BackStage
 ### Packages
 
 1. Sqlite3 for the database
-2. PyTest for unit testing
+2. Django REST Framework
+3. PyTest for unit testing
