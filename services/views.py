@@ -12,7 +12,16 @@ from .models import SquaresDifference
 @api_view(["GET"])
 def difference(request: Request):
 
-    given_number = int(request.query_params.get("number"))
+    try:
+        given_number = int(request.query_params.get("number"))
+    except Exception:
+        given_number = -1
+
+    if given_number < 0 or given_number > 100:
+        msg = ("Query parameter 'number' is required and must be an integer that is"
+               " greater than or equal to 0 and less than or equal to 100!")
+
+        return Response(msg, status=400)
 
     diff_data = get_object_or_404(SquaresDifference, given_number=given_number)
 
