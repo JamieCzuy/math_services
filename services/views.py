@@ -14,6 +14,29 @@ from .models import (
 
 @api_view(["GET"])
 def difference(request: Request):
+    """
+    /difference/ - Sum of Squares vs Squares of Sums
+
+    Description:
+        Service (Endpoint) that, given a number returns the difference between the 
+        square_of_sums and the sum_of_squares of the first n natural numbers.
+
+        Required Query Param: number
+
+        
+    JSON Payload that is Returned:
+    { 
+        'datetime': current_datetime,
+        'value': the difference between square_of_sums and the sum_of_squares
+        'number': the given number
+        'occurrences' - How many times this triangle has been recalled,
+        'last_datetime' - the time and date this triangle was recalled,
+    }
+
+    Error Handling:
+    - A 400 is returned if there is a problem with the number query parameter
+
+    """
 
     try:
         given_number = int(request.query_params.get("number"))
@@ -51,6 +74,30 @@ def difference(request: Request):
 
 @api_view(["GET"])
 def triplet(request: Request):
+    """
+    /triplet/ - Pythagorean Triplet endpoint
+
+    Description:
+        Service (endpoint) that takes 3 integers (a, b and c) that represent the
+        lengths of the 3 sides of a triangle and returns a flag showing whether
+        or not the lengths represent a Pythagorean Triplet (a^2 + b^2 = c^2)
+
+    QueryParams (all three required): a, b, c
+
+    JSON Payload Returned:
+    { 
+        'datetime': current_datetime,
+        'a', 'b', 'c' - the three sides of a triangle,
+        'is_triplet' - True if a, b and c represent a Pythagorean Triplet,
+        'product' - The product of a * b * c,
+        'occurrences' - How many times this triangle has been recalled,
+        'last_datetime' - the time and date this triangle was recalled,
+    }
+
+    Error Handling:
+    - A 400 is returned if any of the a, b, or c parameters is not an integer
+
+    """
 
     # Verify the request
     try:
