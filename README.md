@@ -80,7 +80,7 @@ Math Services for BackStage
         "datetime" - String (representing a Timezone aware timestamp)
         "value" - Integer
         "a, b, and c" - Integer
-        "isTriplet" - Boolean
+        "is_triplet" - Boolean
         "product" - Integer
         "occurrences" - Integer
         "last_datetime" - String (representing a Timezone aware timestamp)
@@ -109,6 +109,8 @@ Math Services for BackStage
 4. These don't feel like class based views. But maybe since we are going to pre-compute the values maybe they are. For now let's go with functional based views.
 
 5. For all text that a user might see we could be using Django utils translation - gettext_lazy (often mapped to "_"). Not going to do that now, just a thought.
+
+6. For the Triplet Service it looks like we cannot pre-load the database.
 
 ## Tools and Packages
 
