@@ -24,7 +24,7 @@ Math Services for BackStage
 3. Use pip to load the required python packages defined in `requirements.txt`:
 
     ```bash
-    pip install -y requirements.txt
+    pip install -r requirements.txt
     ```
 
 4. Use `./manage.py` to run the `runserver` Django management command:
