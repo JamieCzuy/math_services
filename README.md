@@ -59,7 +59,8 @@ that environment activated all you need to do to run the unit tests is:
     pytest
     ```
 
-    You should see `5 passed`
+    You should see:
+    ![Tests Passing](docs/test_pass_image.png)
 
 ## How to Test Math_Services Using curl
 
