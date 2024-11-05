@@ -1,4 +1,3 @@
-# path("api/v2/file_import/", post_collections, name="file_import")
 from django.urls import path
 from .views import (
     difference,
@@ -6,6 +5,6 @@ from .views import (
 )
 
 urlpatterns = [
-    path('difference/', difference),
-    path('triplet/', triplet),
+    path('difference/', difference, name='difference'),
+    path('triplet/', triplet, name='triplet'),
 ]

@@ -40,7 +40,7 @@ Math Services for BackStage
 5. Access the math services:
 
     1. Sum of Squares vs Square of Sums at: http://localhost:8000/difference?number=n
-    TODO: Pythagorean Triplets at http://localhost:8000/triplets?a=a&b=b&c=c
+    2. Pythagorean Triplets at http://localhost:8000/triplet?a=a&b=b&c=c
 
 6. If you'd like to rebuild the database there is a new management command to do that:
 
@@ -49,6 +49,49 @@ Math Services for BackStage
     ```
 
     Note: there is a optional `--force` flag that is required if there is already data in the database.
+
+## How to Test Math_Services Using pytest
+
+1. Pytest is installed in the virtual environment (it is in requirements.txt) so if you have
+that environment activated all you need to do to run the unit tests is:
+
+    ```bash
+    pytest
+    ```
+
+    You should see `5 passed`
+
+## How to Test Math_Services Using curl
+
+Once the math_services are up and running you can use the browser or curl to test the endpoints.
+
+Here are some curl commands to show how the service is working
+(Note: jq makes the output much more readable but if you do not
+have jq installed leave off the `| jq .`)
+
+1. Difference call that works:
+
+    ```bash
+    curl -sS  -H "Accept: application/json" http://localhost:8000/difference/\?number\=10 | jq .
+    ```
+
+2. Difference call that fails (trying to use n instead of number):
+
+    ```bash
+    curl -sS  -H "Accept: application/json" http://localhost:8000/difference/\?n\=10 | jq .
+    ```
+
+3. Triplet call that works:
+
+    ```bash
+    curl -sS  -H "Accept: application/json" http://localhost:8000/triplet/\?a\=3\&b\=4&c=5 | jq .
+    ```
+
+4. Triplet call that fails (not passing in the c param):
+
+    ```bash
+    curl -sS  -H "Accept: application/json" http://localhost:8000/triplet/\?a\=3\&b\=4 | jq .
+    ```
 
 ## Questions
 
